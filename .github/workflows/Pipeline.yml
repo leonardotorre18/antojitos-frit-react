@@ -12,14 +12,14 @@ on:
 
 jobs:
   avoid_reduncy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Cancel all builds
         uses: styfle/cancel-workflow-action@0.9.1
   
   test_client:
     needs: [avoid_reduncy]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -40,7 +40,7 @@ jobs:
 
   test_server:
     needs: [avoid_reduncy]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
