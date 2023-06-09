@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux'
-import './App.css'
 import { addToCart, clearCart } from './store/slices/cartSlice'
 import { TState } from './store'
 import { TProduct } from './store/types'
