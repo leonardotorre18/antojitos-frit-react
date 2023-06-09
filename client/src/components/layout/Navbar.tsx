@@ -14,7 +14,7 @@ export default function Navbar () {
             className='flex gap-3 items-center'
           >
             <li>Inicio</li>
-            <li>Compra</li>
+            <li>Tienda</li>
             <li>Carrito</li>
           </ul>
           <div
