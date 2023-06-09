@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, clearCart } from './store/slices/cartSlice'
 import { TState } from './store'
 import { TProduct } from './store/types'
+import Navbar from './components/layout/Navbar'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <>
+    <Navbar />
 
       {
         cart.length > 0 ? cart.map(product => (
