@@ -1,5 +1,8 @@
 export type TProduct = {
+  id: string,
   title: string,
+  subtitle: string,
   description: string,
-  price: Number,
+  imgPath: string,
+  price: number
 }
