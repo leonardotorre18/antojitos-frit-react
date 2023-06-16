@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node build/main.js",
+    "start": "npm run build && node build/main.js",
     "dev": "nodemon src/index.ts",
     "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
     "build": "webpack --mode=production"
