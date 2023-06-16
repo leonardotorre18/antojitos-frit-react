@@ -2,10 +2,12 @@ const path = require('path')
 const nodeExternal = require('webpack-node-externals')
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.ts'),
+  mode: 'development',
+  entry: path.join(__dirname, 'src', 'index.ts'),
   output: {
-    path: path.resolve(__dirname, './build'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
+    publicPath: '/'
   },
   target: 'node',
   module: {
@@ -17,6 +19,11 @@ module.exports = {
         ],
         exclude: [/node_modules/, /test/]
       }
+    ]
+  },
+  resolve: {
+    extensions: [
+      '.tsx', '.ts', '.js'
     ]
   },
   externals: [nodeExternal()]
