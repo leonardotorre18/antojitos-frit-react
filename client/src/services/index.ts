@@ -1,7 +1,7 @@
 import axios from "axios"
 import { TProduct } from "../store/types"
 
-const url: string = import.meta.env.VITE_API_URL
+const url: string = import.meta.env.VITE_API_URL || 'https://antojitos-frit-api.onrender.com/'
 
 type Callback = (data: TProduct[]) => void
 
