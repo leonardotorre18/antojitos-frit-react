@@ -49,6 +49,13 @@ Dentro de este repositorio se encuentran incluidas dos carpetas con ficheros Pac
 
 <br>
 
+## Variables de Entorno
+
+- **VITE_PUBLIC_URL** : `string` = Dominio donde se encuentra alojado el cliente
+
+- **VITE_API_URL** : `string` = Dominio donde se encuentra alojado el backend
+
+
 # Server
 
 ## Tecnologías empleadas

@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'secondFont': 'belgium'
+        'secondFont': 'belgium',
+        'mainFont': ['Roboto', 'san-serif']
+      },
+      colors: {
+        'secondColor': '#FFAC01'
       }
     },
   },

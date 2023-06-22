@@ -13,13 +13,7 @@ export default function GridCard() {
 
 
   return (
-    <div className='grid grid-cols-4 gap-y-8 p-4'>
-      {/* {
-        [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-        .map(id => (
-          <Card key={id} />
-        ))
-      } */}
+    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 p-4 max-w-7xl mx-auto' >
       {
         products.map((product: TProduct) => (
           <Card product={product} />

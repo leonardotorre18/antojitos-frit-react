@@ -11,17 +11,17 @@ export default function Card({product}: {product: TProduct}) {
   } = product
   
   return (
-    <div className=' mx-auto w-2/3 h-72 bg-white shadow-lg rounded-lg overflow-hidden' key={id}>
-      <div className='h-1/2'>
+    <div className='mx-auto w-56 bg-white shadow-lg shadow-[#dddddd] rounded-lg overflow-hidden' key={id}>
+      <div className='w-full'>
         <img
           className='w-full h-full object-cover'
           src={imgPath}
           alt=""
         />
       </div>
-      <div className='h-1/2'>
-        <h4>{title}</h4>
-        <p>{subtitle}</p>
+      <div className=' font-mainFont px-8 pt-3 pb-10'>
+        <h4 className=' font-semibold text-lg leading-tight mb-3'>{title}</h4>
+        <p className=' opacity-60 leading-tight'>{subtitle}</p>
       </div>
     </div>
   )

@@ -4,15 +4,15 @@ import backgroundJpg from '../../assets/background1.jpg'
 
 export default function Jumbotron() {
   return (
-    <div className='relative h-screen'>
-      <div className='w-full h-full blur opacity-80'>
+    <div className='relative overflow-hidden'>
+      <div className='w-full blur opacity-80 absolute -z-10'>
         <img
-          className='w-full h-full object-cover'
+          className='w-full object-cover'
           src={backgroundJpg} 
           alt="Tarta de chocolate"
         />
       </div>
-      <div className='w-full h-full top-0 left-0 absolute flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center py-14'>
         <img
           className='w-80'
           src={logoPng}
