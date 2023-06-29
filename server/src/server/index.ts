@@ -3,8 +3,12 @@ import cors from "cors";
 import router from "../routes"
 import swaggerConfig from "../docs/swagger";
 import swaggerUI from "swagger-ui-express";
+import { initFirebaseConfig } from "../firebase/config";
 
 const server: Express = express();
+
+// Inicializar base de datos
+initFirebaseConfig()
 
 server.use(cors())
 
