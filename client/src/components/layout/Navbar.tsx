@@ -1,4 +1,6 @@
-import React from 'react'
+// import React from 'react'
+
+import { Link } from "react-router-dom"
 
 export default function Navbar () {
   return (
@@ -13,9 +15,9 @@ export default function Navbar () {
           <ul
             className='flex gap-3 items-center'
           >
-            <li>Inicio</li>
-            <li>Tienda</li>
-            <li>Carrito</li>
+            <Link to={'/'}>Inicio</Link>
+            <Link to={'/products'}>Tienda</Link>
+            <Link to={'/cart'}>Carrito</Link>
           </ul>
           <div
             className='flex gap-3'

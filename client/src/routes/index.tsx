@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import MainLayout from '../views/layout/MainLayout'
 import HomeView from "../views/HomeView";
+import ProductsView from "../views/ProductsView"
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomeView />
+      }, {
+        path: 'products/',
+        element: <ProductsView />
+      }, {
+        path: 'cart/',
+        element: <div>Ruta de Cart</div>
       }
     ],
   }

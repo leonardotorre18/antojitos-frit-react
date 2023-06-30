@@ -2,19 +2,20 @@ import Jumbotron from '../components/pure/Jumbotron'
 import React from 'react'
 import GridCard from '../components/containers/GridCard'
 import SearchBar from '../components/pure/SearchBar'
-import { TProduct } from '../store/types'
-import { getAllProducts } from '../services'
 import CardFull from '../components/pure/CardFull'
+import { getProductsById } from '../firebase'
 
 export default function HomeView() {
 
-  const [mainProduct, setMainProduct] = React.useState<TProduct | undefined>()
+  const [mainProduct, setMainProduct] = React.useState<any>(null)
 
-  React.useEffect(() => {
-    getAllProducts((res) => {
-      setMainProduct(res[0])
-    })
-  },[])
+  React.useEffect(()=> {
+    getProductsById(
+      's1PjctXU4fIEOnFxPqIt',
+      res => setMainProduct(res)
+    )
+  }, [])
+
 
   return (
     <>
