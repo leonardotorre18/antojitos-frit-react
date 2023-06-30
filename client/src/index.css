@@ -6,3 +6,7 @@
   font-family: 'belgium';
   src: url('/font/belgium_victory.otf');
 }
+
+body {
+  overflow-x: hidden;
+}
