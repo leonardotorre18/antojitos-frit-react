@@ -11,7 +11,7 @@ export default function HomeView() {
 
   React.useEffect(()=> {
     getProductsById(
-      's1PjctXU4fIEOnFxPqIt',
+      'lUHmqcBSwllmra28O6e5',
       res => setMainProduct(res)
     )
   }, [])

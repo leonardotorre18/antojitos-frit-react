@@ -9,7 +9,7 @@ export default function Navbar () {
   const toggleMenu = (): void => setShowMenu(!showMenu)
 
   return (
-    <header className=' sticky top-0 left-0 w-full bg-white z-20'>
+    <header className=' sticky top-0 left-0 w-full bg-white z-20 shadow-lg'>
       <nav className='flex justify-between items-center p-4'>
         <span
           className='font-secondFont text-4xl'

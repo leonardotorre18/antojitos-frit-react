@@ -26,6 +26,7 @@ export const getProducts = async (callback: (response: any) => void) => {
 }
 
 export const getProductsById = async (id: string, callback: (response: any) => void) => {
+  const product = (await getDoc(doc(db, 'products', id)))
 
-  callback((await getDoc(doc(db, 'products', id))).data())
+  callback({...product.data(), id: product.id })
 }

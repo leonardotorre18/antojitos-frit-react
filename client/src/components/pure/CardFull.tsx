@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { TProduct } from "../../store/types"
 
 export default function CardFull({product}: {product: TProduct}) {
@@ -8,9 +9,19 @@ export default function CardFull({product}: {product: TProduct}) {
     subtitle,
     imgPath
   } = product
+
+  const navigate = useNavigate();
+
+  const navigateToProduct = () => {
+    navigate('/products/' + id)
+  } 
   
   return (
-    <div className='max-w-7xl mx-auto w-full bg-white shadow-lg shadow-[#dddddd] rounded-lg overflow-hidden' key={id}>
+    <div
+      onClick={navigateToProduct}
+      className='max-w-7xl mx-auto w-full bg-white shadow-lg shadow-[#dddddd] rounded-lg overflow-hidden' 
+      key={id}
+    >
       <div className='w-full  max-h-32 md:max-h-60 overflow-y-hidden'>
         <img
           className='w-full h-full object-cover'

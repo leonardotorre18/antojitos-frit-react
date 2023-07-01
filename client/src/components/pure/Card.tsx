@@ -10,7 +10,7 @@ export default function Card({product}: {product: TProduct}) {
     subtitle,
     imgPath
   } = product
-  console.log(product)  
+   
   const navigate = useNavigate();
 
   const navigateToProduct = () => {
