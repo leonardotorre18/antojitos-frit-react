@@ -29,13 +29,13 @@ export default function Navbar () {
           >
             <button
               type='button'
-              className=' bg-gray-300 px-3 py-1 rounded-full'
+              className='bg-gray-300 px-3 py-1 rounded-full'
             >
               Sign In
             </button>
             <button
               type='button'
-              className=' bg-gray-300 px-3 py-1 rounded-full'
+              className='bg-gray-300 px-3 py-1 rounded-full'
             >
               Sign Up
             </button>

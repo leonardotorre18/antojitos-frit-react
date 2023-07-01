@@ -6,6 +6,7 @@ import MainLayout from '../views/layout/MainLayout'
 import HomeView from "../views/HomeView";
 import ProductsView from "../views/ProductsView"
 import CartView from "../views/CartView";
+import ProductIdView from "../views/ProductIdView";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
         element: <HomeView />
       }, {
         path: 'products/',
-        element: <ProductsView />
+        element: <ProductsView />,
       }, {
+        path: 'products/:idparam',
+        element: <ProductIdView />
+
+      },{
         path: 'cart/',
         element: <CartView />
       }

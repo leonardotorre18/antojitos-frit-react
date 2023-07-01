@@ -16,7 +16,7 @@ const slice =  createSlice({
         action.payload
       ],
     
-    clearCart: (): never[] => []
+    clearCart: (): never[] => [],
   }
 })
 
