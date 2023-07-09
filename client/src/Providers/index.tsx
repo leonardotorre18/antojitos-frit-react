@@ -1,17 +1,16 @@
 import React from 'react'
-import { Provider as ReduxProvider } from 'react-redux'
-import store from '../store'
+import Provider from '../context/Provider'
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactElement
 }
 
 export default function MainProvider({children}: Props) {
   return (
     <>
-    <ReduxProvider store={store}>
+    <Provider>
       {children}
-    </ReduxProvider>
+    </Provider>
     </>
   )
 }

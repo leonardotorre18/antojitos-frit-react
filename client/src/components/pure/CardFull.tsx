@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { TProduct } from "../../store/types"
+import { Product } from '../../types';
 
-export default function CardFull({product}: {product: TProduct}) {
+
+export default function CardFull({product}: {product: Product}) {
 
   const {
     id,

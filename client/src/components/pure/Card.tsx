@@ -1,8 +1,9 @@
 // import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import {TProduct} from '../../store/types'
+import { Product } from '../../types';
 
-export default function Card({product}: {product: TProduct}) {
+
+export default function Card({product}: {product: Product}) {
   
   const {
     id,

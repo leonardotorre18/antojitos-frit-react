@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import logoPng from '../../assets/logo.png'
 import backgroundJpg from '../../assets/background1.jpg'
 

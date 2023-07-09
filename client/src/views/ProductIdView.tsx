@@ -1,26 +1,28 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BsCartPlusFill } from 'react-icons/bs'
-import { TProduct } from '../types'
-import { getProductsById } from '../firebase'
+import { getProductById } from '../firebase'
+import { Product } from '../types'
 
 export default function ProductView() {
 
   const navigate = useNavigate()
-
   const goBackNavigate = () => navigate(-1)
-
   const { idparam } = useParams()
-
   const id: string = idparam ? idparam : ''
 
-  const [product, setProduct] = React.useState<TProduct | any>(null)
 
-  React.useEffect(() => {
-    getProductsById(id, (res) => {
-      setProduct(res)
-    })
-  })
+  const [product, setProduct] = React.useState<Product>()
+
+
+  React.useEffect(()=> {
+    const loadProduct = async (): Promise<void> => {
+      const response = await getProductById(id)
+      setProduct(response)
+    }
+    loadProduct()
+  }, [id])
+
   return product ? 
     <div className='max-w-7xl mx-auto mt-10'>
       <div className='flex flex-nowrap '>

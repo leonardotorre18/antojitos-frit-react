@@ -13,7 +13,9 @@ export default function Navbar () {
       <nav className='flex justify-between items-center p-4'>
         <span
           className='font-secondFont text-4xl'
-        >Antojitos Frit</span>
+        >
+          Antojitos Frit
+        </span>
         <div
           className={`flex gap-5 font-medium absolute sm:static bg-white left-0 w-screen sm:w-auto top-16 ${showMenu ? 'left-0' : 'left-full'} p-10 sm:p-0 flex-col sm:flex-row items-center justify-center transition-all`}
         >
