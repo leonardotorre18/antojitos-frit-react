@@ -7,6 +7,7 @@ import HomeView from "../views/HomeView";
 import ProductsView from "../views/ProductsView"
 import CartView from "../views/CartView";
 import ProductIdView from "../views/ProductIdView";
+import LoginView from "../views/LoginView";
 
 const router = createBrowserRouter([
   {
@@ -17,15 +18,22 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomeView />
-      }, {
+      },
+      {
         path: 'products/',
         element: <ProductsView />,
-      }, {
+      },
+      {
         path: 'products/:idparam',
         element: <ProductIdView />
-      },{
+      },
+      {
         path: 'cart/',
         element: <CartView />
+      },
+      {
+        path: 'login/',
+        element: <LoginView />
       }
     ],
   }

@@ -29,18 +29,23 @@ export default function Navbar () {
           <div
             className='flex gap-3'
           >
-            <button
-              type='button'
-              className='bg-gray-300 px-3 py-1 rounded-full'
-            >
-              Sign In
-            </button>
-            <button
-              type='button'
-              className='bg-gray-300 px-3 py-1 rounded-full'
-            >
-              Sign Up
-            </button>
+            <Link to="/login">
+              <button
+                type='button'
+                className='bg-gray-300 px-3 py-1 rounded-full'
+              >
+                Sign In
+              </button>
+            </Link>
+            <Link to="/login">
+              <button
+                type='button'
+                className='bg-gray-300 px-3 py-1 rounded-full'
+              >
+                Sign Up
+              </button>
+
+            </Link>
           </div>
         </div>
         <BiMenu className=" text-4xl text-secondColor cursor-pointer sm:hidden" onClick={toggleMenu} />
