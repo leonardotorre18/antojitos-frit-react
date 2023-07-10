@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineUserAdd } from 'react-icons/ai'
-import { BsGoogle } from 'react-icons/bs'
+import { FcGoogle } from 'react-icons/fc'
 
 export default function LoginView() {
 
@@ -32,7 +32,7 @@ export default function LoginView() {
             <div className='flex justify-center my-8 gap-6'>
               <button type="button" className=" bg-neutral-900 text-white  py-2 px-6 rounded-lg shadow-lg">Iniciar Sesión</button>
 
-              <button type="button" className='py-2 px-6 flex items-center gap-2 shadow-lg'>Iniciar Sesión con Google <BsGoogle /></button>
+              <button type="button" className='py-2 px-6 flex items-center gap-2 shadow-lg'>Iniciar Sesión con Google <FcGoogle className='text-2xl' /></button>
 
             </div>
 
