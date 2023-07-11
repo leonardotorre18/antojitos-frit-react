@@ -11,7 +11,6 @@ const Provider: React.FC<Props> = ({ children }) => {
   const { Provider } = context;
   const [ state, dispatch ] = Reducers();
   
-
   return ( 
     <Provider value={{ state, dispatch }}>
 

@@ -31,8 +31,8 @@ export default function CardFull({product}: {product: Product}) {
         />
       </div>
       <div className=' font-mainFont px-8 pt-3 pb-10 bg-white'>
-        <h4 className=' font-semibold text-lg leading-tight mb-3'>{title}</h4>
-        <p className=' opacity-60 leading-tight'>{subtitle}</p>
+        <h4 className=' font-bold text-2xl leading-tight mb-3'>{title}</h4>
+        <p className=' opacity-60 text-base leading-tight'>{subtitle}</p>
       </div>
     </div>
   )

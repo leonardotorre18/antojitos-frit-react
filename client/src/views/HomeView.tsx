@@ -3,22 +3,12 @@ import Jumbotron from '../components/pure/Jumbotron'
 import GridCard from '../components/containers/GridCard'
 import SearchBar from '../components/pure/SearchBar'
 import CardFull from '../components/pure/CardFull'
-import { Product } from '../types'
-import { getProductById } from '../firebase'
+import { returnProductsById } from '../utils'
+import { context } from '../context/Context'
 
 export default function HomeView() {
 
-  const [product, setProduct] = React.useState<Product>()
-  
-  React.useEffect(()=> {
-    const loadProduct = async (): Promise<void> => {
-      const response = await getProductById('lUHmqcBSwllmra28O6e5')
-      setProduct(response)
-      console.log(product)
-    }
-    loadProduct()
-  }, [product])
-
+  const { state } = React.useContext(context)
 
   return (
     <>
@@ -39,7 +29,7 @@ export default function HomeView() {
           className='text-4xl pt-2 pb-4 font-extrabold font-mainFont'
         >
           El especial de la semana
-        { product && <CardFull product={product} /> }
+        { returnProductsById(state.products,'lUHmqcBSwllmra28O6e5') && <CardFull product={returnProductsById(state.products,'lUHmqcBSwllmra28O6e5')} /> }
         </h2>
       </section>
 
