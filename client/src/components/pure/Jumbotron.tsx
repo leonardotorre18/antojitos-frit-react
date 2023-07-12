@@ -5,9 +5,9 @@ import backgroundJpg from '../../assets/background1.jpg'
 export default function Jumbotron() {
   return (
     <div className='relative overflow-hidden'>
-      <div className='w-full blur opacity-80 absolute -z-10'>
+      <div className='w-full h-full blur opacity-80 absolute -z-10'>
         <img
-          className='w-full object-cover'
+          className='w-full h-full object-cover'
           src={backgroundJpg} 
           alt="Tarta de chocolate"
         />

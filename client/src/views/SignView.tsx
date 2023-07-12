@@ -1,12 +1,16 @@
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { Outlet } from 'react-router-dom';
+import img from '../assets/background1.jpg'
 
 
 
 export default function SignView() {
 
   return (
-    <div className='p-5'>
+    <div className='p-5 w-full relative'>
+      <div className='absolute w-full h-full top-0 left-0 opacity-60'>
+        <img className='h-full w-full object-cover blur' src={img} alt="" />
+      </div>
 
       <div className='bg-white relative mt-10 max-w-3xl mx-auto rounded-xl p-4 shadow-xl'>
         <div className=' rounded-full p-4 absolute -top-12 bg-white translate-x-1/2 right-1/2'>
