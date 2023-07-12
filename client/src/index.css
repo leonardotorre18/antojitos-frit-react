@@ -8,5 +8,8 @@
 }
 
 body {
+  /* overflow-x: hidden !important; */
+  width: 100vw;
   overflow-x: hidden;
 }
+

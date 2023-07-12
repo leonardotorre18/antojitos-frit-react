@@ -9,15 +9,25 @@ export default function Navbar () {
   const toggleMenu = (): void => setShowMenu(!showMenu)
 
   return (
-    <header className=' sticky top-0 left-0 w-full bg-white z-20 shadow-lg'>
-      <nav className='flex justify-between items-center p-4'>
+    <header
+      className='sticky top-0 left-0 w-screen bg-white z-20 shadow-lg'
+    >
+      <nav 
+        className='flex justify-between items-center p-4 overflow-hidden'
+      >
         <span
           className='font-secondFont text-4xl'
         >
           Antojitos Frit
         </span>
         <div
-          className={`flex gap-5 font-medium absolute sm:static bg-white left-0 w-screen sm:w-auto top-16 ${showMenu ? 'left-0' : 'left-full'} p-10 sm:p-0 flex-col sm:flex-row items-center justify-center transition-all`}
+          className={`
+            flex gap-5 p-10 flex-col items-center
+            sm:flex-row sm:p-0 sm:w-auto sm:static
+            font-medium top-16 transition-all
+            absolute bg-white w-full
+            ${ showMenu ? 'left-0' : ' -left-full' }
+          `}
         >
           <ul
             className='flex gap-3 items-center'
@@ -29,7 +39,7 @@ export default function Navbar () {
           <div
             className='flex gap-3'
           >
-            <Link to="/login">
+            <Link to="/login/signin/">
               <button
                 type='button'
                 className='bg-gray-300 px-3 py-1 rounded-full'
@@ -37,7 +47,7 @@ export default function Navbar () {
                 Sign In
               </button>
             </Link>
-            <Link to="/login">
+            <Link to="/login/signup/">
               <button
                 type='button'
                 className='bg-gray-300 px-3 py-1 rounded-full'
@@ -47,8 +57,9 @@ export default function Navbar () {
 
             </Link>
           </div>
+        
         </div>
-        <BiMenu className=" text-4xl text-secondColor cursor-pointer sm:hidden" onClick={toggleMenu} />
+      <BiMenu className=" text-4xl text-secondColor cursor-pointer sm:hidden" onClick={toggleMenu} /> 
       </nav>
     </header>
   )

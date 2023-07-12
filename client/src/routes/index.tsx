@@ -7,7 +7,9 @@ import HomeView from "../views/HomeView";
 import ProductsView from "../views/ProductsView"
 import CartView from "../views/CartView";
 import ProductIdView from "../views/ProductIdView";
-import LoginView from "../views/LoginView";
+import SignView from "../views/SignView";
+import FormLogin from "../components/forms/FormLogin";
+import FormRegister from "../components/forms/FormRegister";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +35,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'login/',
-        element: <LoginView />
-      }
+        element: <SignView />,
+        children: [
+          {
+            path: 'signin/',
+            element: <FormLogin />,
+          },
+          {
+            path: 'signup/',
+            element: <FormRegister />
+          }
+        ]
+      },
     ],
   }
 ]);

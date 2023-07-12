@@ -5,14 +5,17 @@ import { ACTIONS } from '../actions'
 import CartReducer from './Cart'
 import { ACTIONS_ENUM_PRODUCTS } from '../actions/Products'
 import ProductsReducer from './Products'
+import { User } from 'firebase/auth';
 
 
 export const initialState = { 
-  products: []
+  products: [],
+  user: null
 }
 
 export type State = {
   products: Product[]
+  user: User | null
 }
 
 

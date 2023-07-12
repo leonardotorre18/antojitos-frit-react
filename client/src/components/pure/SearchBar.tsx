@@ -8,7 +8,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className=' bg-secondColor py-[2px] px-2 w-96 rounded-md mx-auto my-3'>
+    <div className=' bg-secondColor py-[2px] px-2 w-60 sm:w-96 rounded-md mx-auto my-3'>
       <form onSubmit={handlerSubmit} className='flex items-center'>
         <input type="text" className='h-full py-1 px-3 w-full outline-0 rounded-s-lg' />
         <button className='pl-2'>
