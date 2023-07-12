@@ -6,6 +6,8 @@ import CartReducer from './Cart'
 import { ACTIONS_ENUM_PRODUCTS } from '../actions/Products'
 import ProductsReducer from './Products'
 import { User } from 'firebase/auth';
+import { ACTIONS_ENUM_USER } from '../actions/User'
+import UserReducer from './User'
 
 
 export const initialState = { 
@@ -27,6 +29,8 @@ const Reducer = (): [ State, React.Dispatch<ACTIONS> ] => {
       ?  CartReducer(state, action) 
       : action.type in ACTIONS_ENUM_PRODUCTS 
       ? ProductsReducer(state, action) 
+      : action.type in ACTIONS_ENUM_USER 
+      ? UserReducer(state, action)
       : state
 
   }

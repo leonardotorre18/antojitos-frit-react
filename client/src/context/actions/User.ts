@@ -16,9 +16,9 @@ export type ACTIONS_USER =
 
 type TSignOut = {
   type: ACTIONS_ENUM_USER,
-  paylad: User
+  payload: User
 }
-export const signOut = (user: User) => ({
+export const signOut = (user: User): TSignOut => ({
   type: ACTIONS_ENUM_USER.SIGN_IN,
   payload: user
 })
@@ -26,9 +26,9 @@ export const signOut = (user: User) => ({
 
 type TSignIn = {
   type: ACTIONS_ENUM_USER,
-  paylad: User
+  payload: User
 }
-export const signIn = (user: User) => ({
+export const signIn = (user: User): TSignIn => ({
   type: ACTIONS_ENUM_USER.SIGN_IN,
   payload: user
 })
@@ -36,10 +36,10 @@ export const signIn = (user: User) => ({
 
 type TSignUp = {
   type: ACTIONS_ENUM_USER,
-  paylad: User
+  payload: User
 }
-export const signUp = (user: User) => ({
-  type: ACTIONS_ENUM_USER.SIGN_IN,
+export const signUp = (user: User): TSignUp => ({
+  type: ACTIONS_ENUM_USER.SIGN_UP,
   payload: user
 })
 

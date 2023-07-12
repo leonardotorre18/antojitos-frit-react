@@ -1,21 +1,22 @@
 import { State } from ".";
-import { ACTIONS_ENUM_USER, ACTIONS_USER } from "../actions/User";
+import { ACTIONS } from "../actions";
+import { ACTIONS_ENUM_USER } from "../actions/User";
 
-export default function UserReducer (state: State, action: ACTIONS_USER): State {
+export default function UserReducer (state: State, action: ACTIONS): State {
 
   switch (action.type) {
 
     case ACTIONS_ENUM_USER.SIGN_IN:
       return {
         ...state,
-        user: action.paylad
+        user: action.payload
       }
       break;
     
     case ACTIONS_ENUM_USER.SIGN_UP:
       return {
         ...state,
-        user: action.paylad
+        user: action.payload
       }
       break;
   

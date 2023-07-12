@@ -2,7 +2,10 @@
 import { FcGoogle } from 'react-icons/fc';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { SignInWithEmail, SignInWithGoogle } from '../../firebase/auth';
+import { SignInWithGoogle, SignUpWithEmail, errorHandler } from '../../firebase/auth';
+import React from 'react';
+import { context } from '../../context/Context';
+import { signIn } from '../../context/actions/User';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,26 +22,50 @@ const validationSchema = Yup.object().shape({
       'La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.'
     )
     .required('La contraseña es requerida'),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), undefined], 'Las contraseñas no coinciden')
 });
 
 export default function FormRegister() {
+  const [error, setError] = React.useState<boolean | string>(false)
+  const {dispatch} = React.useContext(context)
+  
 
-  async function handlerSignInWithGoogle() {
-    const result = await SignInWithGoogle()
-    console.log(result)
+  const handlerSignInWithGoogle = async () => {
+    try {
+      const response = await SignInWithGoogle()
+      dispatch(signIn(response.user))
+    } catch (err) {
+      setError(errorHandler(err))
+    }
+  }
+
+  const handlerSignUp = async (email: string, password: string) => {
+    try {
+      const response = await SignUpWithEmail(email, password)
+      dispatch(signIn(response.user))
+    } catch (err) {
+      setError(errorHandler(err))
+    }
   }
   
   return (
     <Formik
-      initialValues={{ email: '', password: '', name: '' }}
+      initialValues={{ email: '', password: '', name: '', confirmPassword: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        SignInWithEmail(values.email, values.password)
+        handlerSignUp(values.email, values.password)
         setSubmitting(false)
         resetForm()
       }}
     >
       {({ isSubmitting }) => (
+        <>
+        {
+          error ? <p className='w-fit bg-red-600 text-white rounded-lg mx-auto py-1 px-6'>{error}</p>
+          : <></>
+        }
         <Form>
           <label htmlFor="name" className='flex flex-col w-full mt-4'>
             <Field
@@ -74,7 +101,7 @@ export default function FormRegister() {
 
           <label htmlFor="confirmPassword" className='flex flex-col w-full mt-4'>
             <Field
-              type="confirmPassword"
+              type="password"
               name="confirmPassword"
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Confirmar Contraseña'
@@ -102,6 +129,7 @@ export default function FormRegister() {
 
           </div>
         </Form>
+        </>
       )} 
     </Formik>
   )

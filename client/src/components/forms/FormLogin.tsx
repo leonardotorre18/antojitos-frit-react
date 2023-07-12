@@ -1,9 +1,10 @@
-
+import React from 'react';
+import * as Yup from 'yup';
 import { FcGoogle } from 'react-icons/fc';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
-import * as Yup from 'yup';
-import { SignInWithEmail, SignInWithGoogle } from '../../firebase/auth';
+import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/auth';
+import { context } from '../../context/Context';
+import { signIn } from '../../context/actions/User';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,9 +17,25 @@ const validationSchema = Yup.object().shape({
 
 export default function FormLogin() {
 
-  async function handlerSignInWithGoogle() {
-    const result = await SignInWithGoogle()
-    console.log(result)
+  const [error, setError] = React.useState<boolean | string>(false)
+  const { dispatch } = React.useContext(context)
+
+  const handlerSignInWithGoogle = async () => {
+    try {
+      const response = await SignInWithGoogle()
+      dispatch(signIn(response.user))
+    } catch (err) {
+      setError(errorHandler(err))
+    }
+
+  }
+  const handlerSignIn = async (email:string, password:string) => {
+    try {
+      const response = await SignInWithEmail(email, password)
+      dispatch(signIn(response.user))
+    } catch (err) {
+      setError(errorHandler(err))
+    }
   }
   
 
@@ -26,13 +43,19 @@ export default function FormLogin() {
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
-        SignInWithEmail(values.email, values.password)
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setError(false)
+        handlerSignIn(values.email, values.password)
         setSubmitting(false)
         resetForm()
       }}
     >
       {({ isSubmitting }) => (
+        <>
+        {
+          error ? <p className='w-fit bg-red-600 text-white rounded-lg mx-auto py-1 px-6'>{error}</p>
+          : <></>
+        }
         <Form>
           <label htmlFor="email" className='flex flex-col w-full mt-4'>
             <Field
@@ -75,6 +98,7 @@ export default function FormLogin() {
 
           </div>
         </Form>
+        </>
       )} 
     </Formik>
   )
