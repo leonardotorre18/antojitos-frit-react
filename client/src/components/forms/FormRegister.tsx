@@ -4,8 +4,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { SignInWithGoogle, SignUpWithEmail, errorHandler } from '../../firebase/auth';
 import React from 'react';
+import { createUser } from '../../firebase/User';
+import { getAuth, signOut } from 'firebase/auth';
+import { signUp } from '../../context/actions/User';
 import { context } from '../../context/Context';
-import { signIn } from '../../context/actions/User';
+// import { context } from '../../context/Context';
+// import { signIn } from '../../context/actions/User';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -29,25 +33,30 @@ const validationSchema = Yup.object().shape({
 
 export default function FormRegister() {
   const [error, setError] = React.useState<boolean | string>(false)
-  const {dispatch} = React.useContext(context)
   
 
-  const handlerSignInWithGoogle = async () => {
-    try {
-      const response = await SignInWithGoogle()
-      dispatch(signIn(response.user))
-    } catch (err) {
-      setError(errorHandler(err))
-    }
+  const handlerSignInWithGoogle = () => {
+    SignInWithGoogle().then(credential => {
+      const user = credential.user
+      createUser({
+        name: user.displayName,
+        email: user.email,
+        num: 1,
+        id: user.uid
+      })
+
+    })
   }
 
-  const handlerSignUp = async (email: string, password: string) => {
-    try {
-      const response = await SignUpWithEmail(email, password)
-      dispatch(signIn(response.user))
-    } catch (err) {
-      setError(errorHandler(err))
-    }
+  const handlerSignUp = async (email: string, password: string, name: string) => {
+    SignUpWithEmail(email, password).then(credential => {
+      createUser({
+        name: name,
+        email: email,
+        num: 1,
+        id: credential.user.uid
+      })
+    })
   }
   
   return (
@@ -55,7 +64,7 @@ export default function FormRegister() {
       initialValues={{ email: '', password: '', name: '', confirmPassword: '' }}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        handlerSignUp(values.email, values.password)
+        handlerSignUp(values.email, values.password, values.name)
         setSubmitting(false)
         resetForm()
       }}

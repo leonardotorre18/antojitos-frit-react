@@ -5,8 +5,7 @@ import { ACTIONS } from '../actions'
 import CartReducer from './Cart'
 import { ACTIONS_ENUM_PRODUCTS } from '../actions/Products'
 import ProductsReducer from './Products'
-import { User } from 'firebase/auth';
-import { ACTIONS_ENUM_USER } from '../actions/User'
+import { ACTIONS_ENUM_USER, User } from '../actions/User'
 import UserReducer from './User'
 
 

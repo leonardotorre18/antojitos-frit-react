@@ -2,14 +2,16 @@ import React from 'react'
 import Routes from './routes'
 import { LoadProduct } from './services'
 import { context } from './context/Context'
+import { useUser } from './hooks/useUser'
 
 
 function App() {
-  LoadProduct()
   const {state} = React.useContext(context)
+  LoadProduct()
   React.useEffect(() => {
     console.log(state)
   },[state])
+  useUser();
 
   return (
     <>

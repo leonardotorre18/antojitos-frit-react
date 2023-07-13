@@ -2,11 +2,16 @@ import React from 'react'
 
 import { Link } from "react-router-dom"
 import { BiMenu } from "react-icons/bi"
+import { context } from '../../context/Context';
+import { getAuth, signOut } from 'firebase/auth';
 
 export default function Navbar () {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
+  const {state} = React.useContext(context)
 
   const toggleMenu = (): void => setShowMenu(!showMenu)
+
+  const handlerLogOut = () => signOut(getAuth())
 
   return (
     <header
@@ -36,6 +41,17 @@ export default function Navbar () {
             <Link to={'/products'}>Tienda</Link>
             <Link to={'/cart'}>Carrito</Link>
           </ul>
+
+          {
+            state.user ? (
+              <button
+                type='button'
+                className='bg-gray-300 px-3 py-1 rounded-full'
+                onClick={handlerLogOut}
+              >
+                LogOut
+              </button>
+            ) : (
           <div
             className='flex gap-3'
           >
@@ -57,6 +73,8 @@ export default function Navbar () {
 
             </Link>
           </div>
+            )
+          }
         
         </div>
       <BiMenu className=" text-4xl text-secondColor cursor-pointer sm:hidden" onClick={toggleMenu} /> 

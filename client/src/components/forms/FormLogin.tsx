@@ -4,7 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/auth';
 import { context } from '../../context/Context';
-import { signIn } from '../../context/actions/User';
+import { createUser } from '../../firebase/User';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,21 +21,20 @@ export default function FormLogin() {
   const { dispatch } = React.useContext(context)
 
   const handlerSignInWithGoogle = async () => {
-    try {
-      const response = await SignInWithGoogle()
-      dispatch(signIn(response.user))
-    } catch (err) {
-      setError(errorHandler(err))
-    }
+    SignInWithGoogle().then(credential => {
+      const user = credential.user
+      createUser({
+        name: user.displayName,
+        email: user.email,
+        num: 1,
+        id: user.uid
+      })
+
+    })
 
   }
   const handlerSignIn = async (email:string, password:string) => {
-    try {
-      const response = await SignInWithEmail(email, password)
-      dispatch(signIn(response.user))
-    } catch (err) {
-      setError(errorHandler(err))
-    }
+    SignInWithEmail(email, password)
   }
   
 

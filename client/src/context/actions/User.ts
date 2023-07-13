@@ -1,4 +1,10 @@
-import { User } from "firebase/auth"
+
+export type User = {
+  name: string | null,
+  email: string | null,
+  id: string,
+  num: number
+}
 
 
 export enum ACTIONS_ENUM_USER {
@@ -16,11 +22,11 @@ export type ACTIONS_USER =
 
 type TSignOut = {
   type: ACTIONS_ENUM_USER,
-  payload: User
+  payload: null
 }
-export const signOut = (user: User): TSignOut => ({
+export const signOut = (): TSignOut => ({
   type: ACTIONS_ENUM_USER.SIGN_IN,
-  payload: user
+  payload: null
 })
 
 

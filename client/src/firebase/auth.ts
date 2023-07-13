@@ -1,7 +1,5 @@
 import React from 'react'
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { context } from '../context/Context';
-import { signUp } from '../context/actions/User';
 
 const auth = getAuth()
 
