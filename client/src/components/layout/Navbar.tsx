@@ -55,7 +55,7 @@ export default function Navbar () {
           <div
             className='flex gap-3'
           >
-            <Link to="/login/signin/">
+            <Link to="/login">
               <button
                 type='button'
                 className='bg-gray-300 px-3 py-1 rounded-full'
@@ -63,7 +63,7 @@ export default function Navbar () {
                 Sign In
               </button>
             </Link>
-            <Link to="/login/signup/">
+            <Link to="/register">
               <button
                 type='button'
                 className='bg-gray-300 px-3 py-1 rounded-full'

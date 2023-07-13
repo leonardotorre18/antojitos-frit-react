@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/auth';
 import { context } from '../../context/Context';
 import { createUser } from '../../firebase/User';
+import ErrorSign from '../errors/ErrorSign';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,7 +19,6 @@ const validationSchema = Yup.object().shape({
 export default function FormLogin() {
 
   const [error, setError] = React.useState<boolean | string>(false)
-  const { dispatch } = React.useContext(context)
 
   const handlerSignInWithGoogle = async () => {
     SignInWithGoogle().then(credential => {
@@ -34,7 +34,9 @@ export default function FormLogin() {
 
   }
   const handlerSignIn = async (email:string, password:string) => {
-    SignInWithEmail(email, password)
+    SignInWithEmail(email, password).catch(err => {
+      setError(errorHandler(err))
+    })
   }
   
 
@@ -51,10 +53,7 @@ export default function FormLogin() {
     >
       {({ isSubmitting }) => (
         <>
-        {
-          error ? <p className='w-fit bg-red-600 text-white rounded-lg mx-auto py-1 px-6'>{error}</p>
-          : <></>
-        }
+        <ErrorSign validation={error} />
         <Form>
           <label htmlFor="email" className='flex flex-col w-full mt-4'>
             <Field

@@ -5,11 +5,7 @@ import * as Yup from 'yup';
 import { SignInWithGoogle, SignUpWithEmail, errorHandler } from '../../firebase/auth';
 import React from 'react';
 import { createUser } from '../../firebase/User';
-import { getAuth, signOut } from 'firebase/auth';
-import { signUp } from '../../context/actions/User';
-import { context } from '../../context/Context';
-// import { context } from '../../context/Context';
-// import { signIn } from '../../context/actions/User';
+import ErrorSign from '../errors/ErrorSign';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -44,7 +40,6 @@ export default function FormRegister() {
         num: 1,
         id: user.uid
       })
-
     })
   }
 
@@ -56,6 +51,8 @@ export default function FormRegister() {
         num: 1,
         id: credential.user.uid
       })
+    }).catch((err) => {
+      setError(errorHandler(err))
     })
   }
   
@@ -71,10 +68,7 @@ export default function FormRegister() {
     >
       {({ isSubmitting }) => (
         <>
-        {
-          error ? <p className='w-fit bg-red-600 text-white rounded-lg mx-auto py-1 px-6'>{error}</p>
-          : <></>
-        }
+        <ErrorSign validation={error} />
         <Form>
           <label htmlFor="name" className='flex flex-col w-full mt-4'>
             <Field

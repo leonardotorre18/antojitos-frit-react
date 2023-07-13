@@ -1,10 +1,10 @@
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import { Outlet } from 'react-router-dom';
 import img from '../assets/background1.jpg'
+import FormRegister from '../components/forms/FormRegister';
 
 
 
-export default function SignView() {
+export default function SignUpView() {
 
   return (
     <div className='p-5 w-full relative'>
@@ -24,7 +24,7 @@ export default function SignView() {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aliquid. Consequuntur fuga nobis harum pariatur, modi quaerat neque, ipsam obcaecati asperiores numquam architecto perspiciatis quidem, commodi voluptatem quas laborum atque?
           </p>
 
-          <Outlet />
+          <FormRegister />
 
           <p className=' opacity-60 text-center'>¿Olvidó su contraseña?</p>
 
