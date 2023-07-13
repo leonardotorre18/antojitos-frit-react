@@ -1,17 +1,15 @@
 import React from 'react'
 import { context } from '../context/Context'
-import ValidationUser from '../components/errors/ValidationUser'
 
 export default function CartView() {
 
   const { state } = React.useContext(context)
 
   return (
-    <ValidationUser to='/login'>
-      <div>
-        <h2>Bienvenido: {state.user?.email}</h2>
-        <h2>Tu nombre es : {state.user?.name}</h2>
-      </div>
-    </ValidationUser>
+    <div className='p-4 '>
+      <h2 className='text-xl'>Bienvenid@
+      <span className='font-bold ml-2'>{state.user?.name}</span>
+      !</h2>
+    </div>
   )
 }

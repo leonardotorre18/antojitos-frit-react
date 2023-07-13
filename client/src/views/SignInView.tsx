@@ -26,7 +26,10 @@ export default function SignInView() {
 
           <FormLogin />
 
-          <p className=' opacity-60 text-center'>¿Olvidó su contraseña?</p>
+          <p className=' opacity-60 text-center'>
+            ¿Aún no tienes una cuenta?
+            <span className=''>Entra aquí para crearla</span>
+          </p>
 
         </div>
 

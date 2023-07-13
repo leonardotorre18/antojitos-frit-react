@@ -9,6 +9,7 @@ import CartView from "../views/CartView";
 import ProductIdView from "../views/ProductIdView";
 import SignInView from "../views/SignInView";
 import SignUpView from "../views/SignUpView";
+import ValidationUser from "../components/errors/ValidationUser";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,24 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart/',
-        element: <CartView />
+        element: 
+          <ValidationUser to="/login">
+            <CartView />
+          </ValidationUser>
       },
       {
         path: 'login/',
-        element: <SignInView />,
+        element: 
+          <ValidationUser invert to="/cart">
+            <SignInView />,
+          </ValidationUser>
       },
       {
         path: 'register/',
-        element: <SignUpView />
+        element: 
+          <ValidationUser invert to="/cart">
+            <SignUpView />
+          </ValidationUser>
       },
     ],
   }
