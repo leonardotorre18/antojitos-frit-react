@@ -26,6 +26,7 @@ export default function ProductView() {
   const pushNewProduct = () => {
     product && dispatch(addToCart(product, count))
     setCount(1)
+    navigate('/cart')
   }
 
 

@@ -7,11 +7,13 @@ import { useUser } from './hooks/useUser'
 
 function App() {
   const {state} = React.useContext(context)
+
   LoadProduct()
+  useUser();
+
   React.useEffect(() => {
     console.log(state)
   },[state])
-  useUser();
 
   return (
     <>

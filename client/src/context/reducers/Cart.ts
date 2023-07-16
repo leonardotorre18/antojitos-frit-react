@@ -22,6 +22,14 @@ export default function CartReducer(state: State, action: ACTIONS): State {
       }
     }
       break;
+
+    case ACTIONS_ENUM_CART.DELETE_TO_CART: 
+      return {
+        ...state,
+        cart: state.cart.filter(p => p.product.id !== action.payload && p)
+      }
+
+    break;
   
     case ACTIONS_ENUM_CART.CLEAR_CART:
 

@@ -10,6 +10,7 @@ export default function Navbar () {
   const {state} = React.useContext(context)
 
   const toggleMenu = (): void => setShowMenu(!showMenu)
+  const hiddeMenu = (): void => setShowMenu(false)
 
   const handlerLogOut = () => signOut(getAuth())
 
@@ -36,6 +37,7 @@ export default function Navbar () {
         >
           <ul
             className='flex gap-3 items-center'
+            onClick={hiddeMenu}
           >
             <Link to={'/'}>Inicio</Link>
             <Link to={'/products'}>Tienda</Link>
@@ -54,6 +56,7 @@ export default function Navbar () {
             ) : (
           <div
             className='flex gap-3'
+            onClick={hiddeMenu}
           >
             <Link to="/login">
               <button
