@@ -11,11 +11,16 @@ import UserReducer from './User'
 
 export const initialState = { 
   products: [],
+  cart: [],
   user: null
 }
 
 export type State = {
-  products: Product[]
+  products: Product[],
+  cart: Array<{
+    product: Product,
+    count: number
+  }>,
   user: User | null
 }
 

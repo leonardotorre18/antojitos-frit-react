@@ -13,9 +13,9 @@ export default function HomeView() {
   return (
     <>
       <Jumbotron />
-      <SearchBar />
+      {/* <SearchBar /> */}
 
-      <section className='p-4'>
+      <section className='p-4 pt-16'>
         <h2
           className='text-4xl pt-2 pb-4 font-extrabold font-mainFont'
         >

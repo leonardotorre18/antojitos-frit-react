@@ -21,7 +21,7 @@ export default function SignUpView() {
           <h3 className='text-2xl font-bold text-center'>Registrarse</h3>
 
           <p className='text-center my-4 opacity-70'>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aliquid. Consequuntur fuga nobis harum pariatur, modi quaerat neque, ipsam obcaecati asperiores numquam architecto perspiciatis quidem, commodi voluptatem quas laborum atque?
+          Te invitamos a crear una cuenta en nuestro sitio web para mejorar tu experiencia de compra. Al hacerlo, podrás guardar tus productos favoritos, ver tu historial de compras y recibir recomendaciones personalizadas basadas en tus intereses.
           </p>
 
           <FormRegister />

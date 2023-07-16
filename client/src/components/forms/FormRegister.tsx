@@ -6,6 +6,7 @@ import { SignInWithGoogle, SignUpWithEmail, errorHandler } from '../../firebase/
 import React from 'react';
 import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
+import ErrorInput from '../errors/ErrorInput';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -66,7 +67,7 @@ export default function FormRegister() {
         resetForm()
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, errors, touched }) => (
         <>
         <ErrorSign validation={error} />
         <Form>
@@ -77,7 +78,9 @@ export default function FormRegister() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Nombre'
             />
-            <ErrorMessage name="name" component="div" />
+            {/* <ErrorMessage name="name" component="div" /> */}
+             
+            { errors.name && touched.name ? <ErrorInput message={errors.name} /> : <></> }
                   
           </label>
 
@@ -88,7 +91,7 @@ export default function FormRegister() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Correo'
             />
-            <ErrorMessage name="email" component="div" />
+            { errors.email && touched.email ? <ErrorInput message={errors.email} /> : <></> }
                   
           </label>
 
@@ -99,7 +102,7 @@ export default function FormRegister() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Contraseña'
             />
-            <ErrorMessage name="password" component="div" />                  
+            { errors.password && touched.password ? <ErrorInput message={errors.password} /> : <></> }
           </label>
 
           <label htmlFor="confirmPassword" className='flex flex-col w-full mt-4'>
@@ -109,7 +112,7 @@ export default function FormRegister() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Confirmar Contraseña'
             />
-            <ErrorMessage name="confirmPassword" component="div" />                  
+            { errors.confirmPassword && touched.confirmPassword ? <ErrorInput message={errors.confirmPassword} /> : <></> }
           </label>
 
           <div className='flex justify-center my-8 gap-6'>

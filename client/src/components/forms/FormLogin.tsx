@@ -6,6 +6,7 @@ import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/
 import { context } from '../../context/Context';
 import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
+import ErrorInput from '../errors/ErrorInput';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -51,7 +52,7 @@ export default function FormLogin() {
         resetForm()
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, errors, touched }) => (
         <>
         <ErrorSign validation={error} />
         <Form>
@@ -62,7 +63,7 @@ export default function FormLogin() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Correo'
             />
-            <ErrorMessage name="email" component="div" />
+            { errors.email && touched.email ? <ErrorInput message={errors.email} /> : <></> }
                   
           </label>
 
@@ -73,7 +74,7 @@ export default function FormLogin() {
               className='outline-none border-gray-300 rounded-xl border-2 shadow-xl text-base py-2 px-5'
               placeholder='Contraseña'
             />
-            <ErrorMessage name="password" component="div" />                  
+            { errors.password && touched.password ? <ErrorInput message={errors.password} /> : <></> }
           </label>
 
           <div className='flex justify-center my-8 gap-6'>

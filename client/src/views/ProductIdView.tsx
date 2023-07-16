@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { BsCartPlusFill } from 'react-icons/bs'
 import { getProductById } from '../firebase'
 import { Product } from '../types'
+import { context } from '../context/Context'
+import { addToCart } from '../context/actions/Cart'
 
 export default function ProductView() {
 
@@ -10,21 +12,33 @@ export default function ProductView() {
   const goBackNavigate = () => navigate(-1)
   const { idparam } = useParams()
   const id: string = idparam ? idparam : ''
+  const { dispatch } = React.useContext(context)
+
+  const [ count, setCount ] = React.useState<number>(1)
+
+  const incrementCount = () => setCount(count+1)
+  const decrementCount = () => setCount( count > 1 ? count - 1 : count)
 
 
   const [product, setProduct] = React.useState<Product>()
 
 
+  const pushNewProduct = () => {
+    product && dispatch(addToCart(product, count))
+    setCount(1)
+  }
+
+
   React.useEffect(()=> {
     const loadProduct = async (): Promise<void> => {
       const response = await getProductById(id)
-      setProduct(response)
+      setProduct({...response, id})
     }
     loadProduct()
   }, [id])
 
   return product ? 
-    <div className='max-w-7xl mx-auto mt-10'>
+    <div className='max-w-7xl mx-auto mt-10 py-8 px-6'>
       <div className='flex flex-nowrap '>
 
         <div className='w-1/2 overflow-hidden rounded-lg'>
@@ -44,9 +58,19 @@ export default function ProductView() {
 
             <div className='flex justify-center w-full m-10'>
               <div className='flex items-center shadow-lg p-1'>
-                <button className='rounded-lg bg-secondColor text-2xl font-bold h-10 w-10 flex items-center justify-center text-white'>-</button>
-                <span className='mx-6 text-lg'>10</span>
-                <button className='rounded-lg bg-secondColor text-2xl font-bold h-10 w-10 flex items-center justify-center text-white'>+</button>
+                <button
+                  onClick={decrementCount}
+                  className='rounded-lg bg-secondColor text-2xl font-bold h-10 w-10 flex items-center justify-center text-white'
+                >
+                  -
+                </button>
+                <span className='mx-6 text-lg'>{ count }</span>
+                <button
+                  onClick={incrementCount}
+                  className='rounded-lg bg-secondColor text-2xl font-bold h-10 w-10 flex items-center justify-center text-white'
+                >
+                  +
+                </button>
               </div>
             </div>
 
@@ -59,7 +83,10 @@ export default function ProductView() {
       </div>
 
       <div className='mt-10 flex w-full justify-center'>
-        <button className='rounded-lg bg-secondColor text-xl flex items-center gap-4 py-2 px-5 justify-center text-white'>
+        <button
+          onClick={pushNewProduct}
+          className='rounded-lg bg-secondColor text-xl flex items-center gap-4 py-2 px-5 justify-center text-white'
+        >
           <BsCartPlusFill className='text-white text-3xl' />
           Agregar al carrito
         </button>

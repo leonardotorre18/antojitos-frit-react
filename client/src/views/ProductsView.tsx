@@ -1,15 +1,15 @@
 import Jumbotron from '../components/pure/Jumbotron'
 import GridCard from '../components/containers/GridCard'
-import SearchBar from '../components/pure/SearchBar'
+// import SearchBar from '../components/pure/SearchBar'
 
 export default function HomeView() {
 
   return (
     <>
       <Jumbotron />
-      <SearchBar />
+      {/* <SearchBar /> */}
 
-      <section className='p-4'>
+      <section className='p-4 py-16'>
         <GridCard />
       </section>
 

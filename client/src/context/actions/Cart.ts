@@ -11,11 +11,11 @@ export type ACTIONS_CART =
 
 type TAddToCart = {
   type: ACTIONS_ENUM_CART.ADD_TO_CART,
-  payload: Product
+  payload: {product: Product, count: number}
 }
-export const addtoCart = (product: Product): TAddToCart => ({
+export const addToCart = (product: Product, count: number): TAddToCart => ({
   type: ACTIONS_ENUM_CART.ADD_TO_CART,
-  payload: product
+  payload: { product, count }
 })
 
 type TClearCart = {

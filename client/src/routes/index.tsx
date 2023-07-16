@@ -32,9 +32,9 @@ const router = createBrowserRouter([
       {
         path: 'cart/',
         element: 
-          <ValidationUser to="/login">
+          // <ValidationUser to="/login">
             <CartView />
-          </ValidationUser>
+          // </ValidationUser>
       },
       {
         path: 'login/',

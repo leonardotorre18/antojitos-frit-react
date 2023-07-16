@@ -21,7 +21,7 @@ export default function Card({product}: {product: Product}) {
   return (
     <div
       onClick={navigateToProduct}
-      className='mx-auto w-full sm:w-56 bg-white shadow-lg shadow-[#dddddd] rounded-lg overflow-hidden'
+      className='mx-auto w-full bg-white shadow-lg shadow-[#dddddd] rounded-lg overflow-hidden'
     >
       <div className='w-full'>
         <img
