@@ -44,7 +44,7 @@ export default function Navbar () {
             <Link to={'/cart'}>Carrito</Link>
           </ul>
 
-          {
+          { 
             state.user ? (
               <button
                 type='button'

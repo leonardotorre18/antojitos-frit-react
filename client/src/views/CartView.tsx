@@ -19,11 +19,17 @@ export default function CartView() {
       </div>
       ) : <></>
     }
-    <div className='mt-10'>
-      {
-        state.cart.map(item => <ProductItem product={item.product} count={item.count} />)
-      }
-      
+    <div className='md:flex'>
+      <div className='md:w-1/2 mt-10'>
+        {
+          state.cart.map(item => <ProductItem product={item.product} count={item.count} />)
+        }
+      </div>
+      <div className='md:w-1/2 '>
+
+        <p>Productos Totales:  { 'En construcción' }</p>
+
+      </div>
     </div>
     </>
   )
