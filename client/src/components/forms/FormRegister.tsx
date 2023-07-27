@@ -38,7 +38,7 @@ export default function FormRegister() {
       createUser({
         name: user.displayName,
         email: user.email,
-        num: 1,
+        cart: [],
         id: user.uid
       })
     })
@@ -49,7 +49,7 @@ export default function FormRegister() {
       createUser({
         name: name,
         email: email,
-        num: 1,
+        cart: [],
         id: credential.user.uid
       })
     }).catch((err) => {

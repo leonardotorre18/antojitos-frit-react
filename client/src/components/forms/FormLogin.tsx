@@ -22,16 +22,17 @@ export default function FormLogin() {
   const [error, setError] = React.useState<boolean | string>(false)
 
   const handlerSignInWithGoogle = async () => {
-    SignInWithGoogle().then(credential => {
-      const user = credential.user
-      createUser({
-        name: user.displayName,
-        email: user.email,
-        num: 1,
-        id: user.uid
-      })
+    SignInWithGoogle()
+    // .then(credential => {
+    //   const user = credential.user
+    //   createUser({
+    //     name: user.displayName,
+    //     email: user.email,
+    //     cart: [],
+    //     id: user.uid
+    //   })
 
-    })
+    // })
 
   }
   const handlerSignIn = async (email:string, password:string) => {
