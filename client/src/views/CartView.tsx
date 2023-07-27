@@ -8,7 +8,7 @@ export default function CartView() {
   const { state } = React.useContext(context)
 
   return (
-    <div className='flex h-screen'>
+    <div className='sm:flex sm:h-screen'>
       <div className='w-full h-full'>
         {
           state.user ? (
@@ -38,7 +38,7 @@ export default function CartView() {
 
       </div>
       {/* Menú lateral */}
-      <div className='bg-gray-100 w-1/3 py-8 px-5'>
+      <div className='bg-gray-100 sm:w-1/3 py-8 px-5'>
         <h3 className='text-2xl font-bold my-6'>Resumen del pedido</h3>
         <div className='flex justify-between'>
           <p className='flex gap-2'>

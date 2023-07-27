@@ -4,6 +4,7 @@ import { context } from '../context/Context'
 import { signIn, signOut } from '../context/actions/User'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+import { setToCart } from '../context/actions/Cart'
 
 export const useUser = () => {
   const { dispatch } = React.useContext(context)
@@ -20,9 +21,10 @@ export const useUser = () => {
           dispatch(signIn({
             email: doc?.email,
             name: doc?.name,
-            num: 1,
+            cart: [],
             id: snapshot.id
           }))
+          dispatch(setToCart(doc?.cart))
 
         })
 

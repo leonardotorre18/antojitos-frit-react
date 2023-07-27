@@ -1,9 +1,9 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { FcGoogle } from 'react-icons/fc';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/auth';
-import { context } from '../../context/Context';
+// import { context } from '../../context/Context';
 import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
 import ErrorInput from '../errors/ErrorInput';

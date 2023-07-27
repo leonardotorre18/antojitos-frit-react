@@ -1,9 +1,10 @@
+import { Product } from "../../types"
 
 export type User = {
   name: string | null,
   email: string | null,
   id: string,
-  num: number
+ cart: Array<{ count: number, product: Product }>
 }
 
 
