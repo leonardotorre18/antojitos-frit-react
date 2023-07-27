@@ -24,7 +24,7 @@ export const useUser = () => {
             cart: [],
             id: snapshot.id
           }))
-          dispatch(setToCart(doc?.cart))
+          doc?.cart && dispatch(setToCart(doc.cart))
 
         })
 

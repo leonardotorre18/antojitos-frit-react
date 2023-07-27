@@ -40,13 +40,13 @@ export default function ProductView() {
 
   return product ? 
     <div className='max-w-7xl mx-auto mt-10 py-8 px-6'>
-      <div className='flex flex-nowrap '>
+      <div className='sm:flex sm:flex-nowrap '>
 
-        <div className='w-1/2 overflow-hidden rounded-lg'>
+        <div className='sm:w-1/2 mb-6 sm:mb-0 overflow-hidden rounded-lg'>
           <img className='w-full' src={product.imgPath} alt="" />
         </div>
 
-        <div className='w-1/2'>
+        <div className='sm:w-1/2'>
           <div className='w-full flex justify-end'>
             <button onClick={goBackNavigate} className='bg-gray-300 px-3 py-1 rounded-xl text-white text-lg font-extrabold'>X</button>
           </div>

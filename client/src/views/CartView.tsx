@@ -8,7 +8,7 @@ export default function CartView() {
   const { state } = React.useContext(context)
 
   return (
-    <div className='sm:flex sm:h-screen'>
+    <div className='md:flex md:h-screen'>
       <div className='w-full h-full'>
         {
           state.user ? (
@@ -30,15 +30,15 @@ export default function CartView() {
 
         <div className=' p-4 h-full overflow-y-auto'>
           {
-            state.cart.length > 0 ? 
-              state.cart.map(item => <ProductItem product={item.product} count={item.count} />)
-              : <span className='p-4'>No hay elementos en el carrito</span>
+            state.cart && state.cart.length > 0 ? 
+            state.cart.map(item => <ProductItem product={item.product} count={item.count} />)
+            : <span className='p-4'>No hay elementos en el carrito</span>
           }
         </div>
 
       </div>
       {/* Menú lateral */}
-      <div className='bg-gray-100 sm:w-1/3 py-8 px-5'>
+      <div className='bg-gray-100 md:w-1/3 py-8 px-5'>
         <h3 className='text-2xl font-bold my-6'>Resumen del pedido</h3>
         <div className='flex justify-between'>
           <p className='flex gap-2'>
