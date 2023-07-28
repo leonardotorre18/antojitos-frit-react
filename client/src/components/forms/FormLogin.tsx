@@ -7,6 +7,9 @@ import { SignInWithEmail, SignInWithGoogle, errorHandler } from '../../firebase/
 import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
 import ErrorInput from '../errors/ErrorInput';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { User } from '../../context/actions/User';
+import { context } from '../../context/Context';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -20,19 +23,33 @@ const validationSchema = Yup.object().shape({
 export default function FormLogin() {
 
   const [error, setError] = React.useState<boolean | string>(false)
+  const { state } = React.useContext(context)
 
   const handlerSignInWithGoogle = async () => {
     SignInWithGoogle()
-    // .then(credential => {
-    //   const user = credential.user
-    //   createUser({
-    //     name: user.displayName,
-    //     email: user.email,
-    //     cart: [],
-    //     id: user.uid
-    //   })
-
-    // })
+    .then(async (credential) => {
+      const user = credential.user
+      const users: User[] = [];
+      await getDocs(collection(getFirestore(), 'users')).then( docs => docs.forEach( doc => {
+        const data = doc.data();
+        users.push({
+          name: data.name,
+          email: data.email,
+          id: '',
+          cart: []
+        })
+      } ))
+      if (users.some(item => item.email == user.email)) {
+        console.log('El usuario es existenten')
+      } else {
+        createUser({
+          name: user.displayName,
+          email: user.email,
+          cart: state.cart,
+          id: user.uid
+        })
+      }
+    })
 
   }
   const handlerSignIn = async (email:string, password:string) => {

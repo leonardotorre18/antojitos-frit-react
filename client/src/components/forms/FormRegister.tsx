@@ -1,12 +1,15 @@
 
 import { FcGoogle } from 'react-icons/fc';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { SignInWithGoogle, SignUpWithEmail, errorHandler } from '../../firebase/auth';
 import React from 'react';
 import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
 import ErrorInput from '../errors/ErrorInput';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { User } from '../../context/actions/User';
+import { context } from '../../context/Context';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -30,18 +33,34 @@ const validationSchema = Yup.object().shape({
 
 export default function FormRegister() {
   const [error, setError] = React.useState<boolean | string>(false)
-  
+  const { state } = React.useContext(context)
 
-  const handlerSignInWithGoogle = () => {
-    SignInWithGoogle().then(credential => {
+  const handlerSignInWithGoogle = async () => {
+    SignInWithGoogle()
+    .then(async (credential) => {
       const user = credential.user
-      createUser({
-        name: user.displayName,
-        email: user.email,
-        cart: [],
-        id: user.uid
-      })
+      const users: User[] = [];
+      await getDocs(collection(getFirestore(), 'users')).then( docs => docs.forEach( doc => {
+        const data = doc.data();
+        users.push({
+          name: data.name,
+          email: data.email,
+          id: '',
+          cart: []
+        })
+      } ))
+      if (users.some(item => item.email == user.email)) {
+        console.log('El usuario es existen')
+      } else {
+        createUser({
+          name: user.displayName,
+          email: user.email,
+          cart: state.cart,
+          id: user.uid
+        })
+      }
     })
+
   }
 
   const handlerSignUp = async (email: string, password: string, name: string) => {
