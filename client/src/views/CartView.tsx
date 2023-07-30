@@ -1,11 +1,12 @@
 import React from 'react'
 import { context } from '../context/Context'
 import ProductItem from '../components/pure/ProductItem'
-import { getTotalPrice } from '../utils'
+import newMessageWhatsapp, { getTotalPrice } from '../utils'
+import { clearCart } from '../context/actions/Cart'
 
 export default function CartView() {
 
-  const { state } = React.useContext(context)
+  const { state, dispatch } = React.useContext(context)
 
   return (
     <div className='md:flex md:h-screen'>
@@ -63,6 +64,10 @@ export default function CartView() {
         <button
           type='button' 
           className='bg-gradient-to-b to-secondColor from-yellow-400 font-mainFont text-white font-semibold py-2 px-6 rounded-full'
+          onClick={() => {
+            window.open(newMessageWhatsapp(state.cart, getTotalPrice(state.cart)))
+            dispatch(clearCart())
+          }}
         >
           Comprar mi Carrito
         </button>
