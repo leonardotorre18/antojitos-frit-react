@@ -10,6 +10,7 @@ import ProductIdView from "../views/ProductIdView";
 import SignInView from "../views/SignInView";
 import SignUpView from "../views/SignUpView";
 import ValidationUser from "../components/errors/ValidationUser";
+import AdminView from "../views/AdminView";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
           <ValidationUser invert to="/cart">
             <SignUpView />
           </ValidationUser>
+      },
+      {
+        path: 'admin/',
+        element: <AdminView />
       },
     ],
   }
