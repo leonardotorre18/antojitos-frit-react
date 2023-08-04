@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Product } from '../types';
-import { collection, doc, getDoc, getDocs, getFirestore, updateDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getFirestore, updateDoc } from 'firebase/firestore';
+import { db } from '.';
 
 
 export const saveInOnlineCart = (payload: Array<{ count: number, product: Product }>) => {
@@ -11,4 +12,8 @@ export const saveInOnlineCart = (payload: Array<{ count: number, product: Produc
       })
     }
   })
+}
+
+export const deleteProductFirebase = async (id: string) => {
+  await deleteDoc(doc(db, 'products', id))
 }

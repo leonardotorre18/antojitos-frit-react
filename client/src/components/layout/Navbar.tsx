@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { BiMenu } from "react-icons/bi"
 import { context } from '../../context/Context';
 import { getAuth, signOut } from 'firebase/auth';
+import ValidationPrivileges from '../errors/ValidationPrivileges';
 
 export default function Navbar () {
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
@@ -42,6 +43,9 @@ export default function Navbar () {
             <Link to={'/'}>Inicio</Link>
             <Link to={'/products'}>Tienda</Link>
             <Link to={'/cart'}>Carrito</Link>
+            <ValidationPrivileges>
+              <Link to={'/admin'}>Dashboard</Link>
+            </ValidationPrivileges>
           </ul>
 
           { 

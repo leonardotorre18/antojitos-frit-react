@@ -22,7 +22,8 @@ export const useUser = () => {
             email: doc?.email,
             name: doc?.name,
             cart: [],
-            id: snapshot.id
+            id: snapshot.id,
+            privileges: doc?.privileges
           }))
           doc?.cart && dispatch(setToCart(doc.cart))
 

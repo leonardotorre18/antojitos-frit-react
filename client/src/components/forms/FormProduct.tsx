@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import ErrorSign from '../errors/ErrorSign';
 import ErrorInput from '../errors/ErrorInput';
-import { Product } from '../../types';
 import { uploadImage } from '../../firebase/images';
 import { context } from '../../context/Context';
 import { RefreshProducts } from '../../services';
@@ -151,7 +150,7 @@ export default function FormProduct() {
               className=" bg-neutral-900 text-white  py-2 px-6 rounded-lg shadow-lg"
               disabled={isSubmitting}
             >
-              Iniciar Sesión
+              Crear producto
             </button>
 
           </div>

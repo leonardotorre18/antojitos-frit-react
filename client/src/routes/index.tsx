@@ -11,6 +11,7 @@ import SignInView from "../views/SignInView";
 import SignUpView from "../views/SignUpView";
 import ValidationUser from "../components/errors/ValidationUser";
 import AdminView from "../views/AdminView";
+import ValidationPrivileges from "../components/errors/ValidationPrivileges";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'admin/',
-        element: <AdminView />
+        element: 
+        <ValidationUser to="/login">
+          <ValidationPrivileges>
+          <AdminView />
+          </ValidationPrivileges>
+        </ValidationUser>
       },
     ],
   }

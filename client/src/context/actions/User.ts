@@ -1,10 +1,16 @@
 import { Product } from "../../types"
 
+export enum Privileges {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+}
+
 export type User = {
   name: string | null,
   email: string | null,
   id: string,
- cart: Array<{ count: number, product: Product }>
+  cart: Array<{ count: number, product: Product }>,
+  privileges: Privileges;
 }
 
 

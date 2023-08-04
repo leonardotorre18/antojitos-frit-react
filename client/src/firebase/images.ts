@@ -1,6 +1,6 @@
 
 import { addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestore';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { db } from '.';
 import { RefreshProducts } from '../services';
@@ -16,7 +16,9 @@ type Product = {
   image: File,
 }
 
-
+export const deleteImage =async (id:string) => {
+  await deleteObject(ref(storage, id))
+}
 export const uploadImage = async (product: Product) => {
 
   const imgID = `${v4()}.jpg`;

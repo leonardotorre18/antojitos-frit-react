@@ -12,6 +12,11 @@ export default function ProductsReducer (state: State, action: ACTIONS): State {
         products: action.payload
       }
 
+    case ACTIONS_ENUM_PRODUCTS.DELETE_PRODUCTS: 
+      return {
+        ...state,
+        products: state.products.filter(item => item.id !== action.payload)
+      }
 
 
       break;

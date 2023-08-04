@@ -8,7 +8,7 @@ import { createUser } from '../../firebase/User';
 import ErrorSign from '../errors/ErrorSign';
 import ErrorInput from '../errors/ErrorInput';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
-import { User } from '../../context/actions/User';
+import { Privileges, User } from '../../context/actions/User';
 import { context } from '../../context/Context';
 
 const validationSchema = Yup.object().shape({
@@ -36,17 +36,19 @@ export default function FormLogin() {
           name: data.name,
           email: data.email,
           id: '',
-          cart: []
+          cart: [],
+          privileges: data.privileges
         })
       } ))
       if (users.some(item => item.email == user.email)) {
-        console.log('El usuario es existenten')
+        console.log('El usuario es existente')
       } else {
         createUser({
           name: user.displayName,
           email: user.email,
           cart: state.cart,
-          id: user.uid
+          id: user.uid,
+          privileges: Privileges.USER
         })
       }
     })
