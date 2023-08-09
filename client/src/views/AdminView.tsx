@@ -4,8 +4,6 @@ import { context } from '../context/Context'
 import { deleteProductFirebase } from '../firebase/Products'
 import { deleteProduct } from '../context/actions/Products'
 import { RefreshProducts } from '../services'
-import { deleteObject, ref } from 'firebase/storage'
-import { db } from '../firebase'
 import { deleteImage } from '../firebase/images'
 
 
@@ -44,9 +42,6 @@ export default function AdminView() {
           }
         </div>
       </div>
-
-
-
 
 
 
